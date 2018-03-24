@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "fp-ts": "^1.2.0",
+    "minimatch": "^3.0.4",
+    "react-docgen-typescript": "^1.2.6",
+    "typescript": "^2.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.0",
+    "ts-node": "^5.0.1"
+  }
+}

@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "es2015",
-    "module": "es2015",
-    "outDir": "dist",
-    "pretty": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "jsx": "react",
     "baseUrl": "src"
   },

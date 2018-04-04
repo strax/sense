@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Core API for Sense",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "react-markdown": "^3.3.0"

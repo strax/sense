@@ -1,7 +1,7 @@
 import React from "react";
 import Markdown from "react-markdown";
 
-interface Props {
+export interface Props {
   component?: React.ComponentType<any>;
   description?: string | React.ReactElement<any>;
 }

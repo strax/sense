@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "components";
+import { Example, markdown } from "@sense/core";
 
 export default (
   <Example

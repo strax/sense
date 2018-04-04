@@ -2,11 +2,10 @@ import typescript from "rollup-plugin-typescript2";
 import multiEntry from "rollup-plugin-multi-entry";
 
 export default {
-  input: ["src/**/*.tsx", "src/**/*.ts"],
+  input: "src/index.ts",
   output: {
-    file: "dist/bundle.js",
-    dir: "dist",
+    file: "dist/index.js",
     format: "es"
   },
-  plugins: [multiEntry(), typescript({ tsconfig: "tsconfig.json" })]
+  plugins: [typescript({ tsconfig: "tsconfig.json" })]
 };

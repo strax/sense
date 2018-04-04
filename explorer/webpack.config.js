@@ -3,7 +3,9 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  mode: "development",
+  devtool: "source-map",
+  entry: ["./src/host.tsx"],
   module: {
     rules: [
       {
@@ -14,11 +16,22 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"]
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    alias: {
+      manifest$: path.resolve("../manifest.json"),
+      source: path.resolve("../components/src/")
+    }
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "[name].js"
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [
+    new webpack.DefinePlugin({
+      SENSE_GUEST_PATH: JSON.stringify(path.resolve("../components/src"))
+    }),
+    new HtmlWebpackPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.EnvironmentPlugin({ NODE_ENV: "development" })
+  ]
 };

@@ -1,4 +1,12 @@
 {
+  "name": "components",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
@@ -12,5 +20,8 @@
     "rollup-plugin-multi-entry": "^2.0.2",
     "rollup-plugin-typescript2": "^0.12.0",
     "typescript": "^2.7.2"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
   }
 }

@@ -4,6 +4,7 @@ import { Example } from "@sense/core";
 import { ExampleElement } from "ModuleMap";
 import styled from "styled-components";
 import JsxPreview from "./JsxPreview";
+import transparent from "./transparent.svg";
 
 const COMPONENT_NAME_RE = /\/__examples__\/(.+)\.example\.(?:.+)$/;
 
@@ -19,6 +20,16 @@ const ExampleMeta: React.SFC<{ example: Example }> = props => (
     <JsxPreview example={props.example} />
   </div>
 );
+
+const ComponentContainer = styled.div`
+  border: 1px solid #dedede;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('${transparent}');
+  background-size: 20px 20px;
+`;
 
 interface State {
   instance?: Example;
@@ -51,7 +62,9 @@ export default class ExampleRenderer extends React.Component<Props, State> {
     return (
       <>
         {this.state.instance && <ExampleMeta example={this.state.instance} />}
-        <div ref={node => node && (this.mountNode = node)} />
+        <ComponentContainer
+          innerRef={node => node && (this.mountNode = node)}
+        />
       </>
     );
   }

@@ -6,6 +6,10 @@
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
+    "common-tags": "^1.7.2",
     "react-markdown": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/common-tags": "^1.4.0"
   }
 }

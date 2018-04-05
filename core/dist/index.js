@@ -1,15 +1,21 @@
 import React from "react";
-const ComponentName = props => {
-    if (props.component) {
-        return React.createElement("h3", null, props.component.name);
-    }
-    else {
-        return null;
-    }
-};
+import Markdown from "react-markdown";
+import { stripIndent } from "common-tags";
+export function markdown(segments) {
+    const joined = stripIndent(segments);
+    return React.createElement(Markdown, { source: joined });
+}
 export class Example extends React.Component {
+    get component() {
+        return this.props.component;
+    }
+    get description() {
+        return this.props.description;
+    }
+    get view() {
+        return this.props.children;
+    }
     render() {
-        return (React.createElement("div", null,
-            React.createElement(ComponentName, { component: this.props.component })));
+        return this.props.children;
     }
 }

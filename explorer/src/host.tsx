@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ComponentView from "./ComponentView";
-import components from "./guest";
+import modules from "./guest";
+import App from "./App";
+import ModuleMap from "ModuleMap";
 
 declare const SENSE_MANIFEST: string;
 
@@ -10,28 +12,14 @@ interface HotContext {
 }
 
 interface Props {
-  components: ReadonlyMap<string, () => JSX.Element>;
-}
-
-class App extends React.Component<Props> {
-  render() {
-    return (
-      <div>
-        {Array.from(this.props.components.entries()).map(
-          ([name, component]) => (
-            <ComponentView path={name} render={component} key={name} />
-          )
-        )}
-      </div>
-    );
-  }
+  components: ModuleMap;
 }
 
 const root =
-  (module.hot && (module.hot.data as HotContext) && module.hot.data) ||
+  (module.hot && module.hot.data && module.hot.data.root) ||
   document.body.appendChild(document.createElement("div"));
 
-ReactDOM.render(<App components={components} />, root);
+ReactDOM.render(<App modules={modules} />, root);
 
 if (module.hot) {
   module.hot.dispose(data => {

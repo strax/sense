@@ -1,27 +1,31 @@
 import React from "react";
 import Markdown from "react-markdown";
+import { stripIndent } from "common-tags";
 
 export interface Props {
-  component?: React.ComponentType<any>;
+  component?: React.ComponentType;
   description?: string | React.ReactElement<any>;
 }
 
-const ComponentName: React.SFC<{
-  component: React.ComponentType<any> | undefined;
-}> = props => {
-  if (props.component) {
-    return <h3>{props.component.name}</h3>;
-  } else {
-    return null;
-  }
-};
+export function markdown(segments: TemplateStringsArray) {
+  const joined = stripIndent(segments);
+  return <Markdown source={joined} />;
+}
 
 export class Example extends React.Component<Props> {
+  public get component() {
+    return this.props.component;
+  }
+
+  public get description() {
+    return this.props.description;
+  }
+
+  public get view() {
+    return this.props.children;
+  }
+
   render() {
-    return (
-      <div>
-        <ComponentName component={this.props.component} />
-      </div>
-    );
+    return this.props.children;
   }
 }

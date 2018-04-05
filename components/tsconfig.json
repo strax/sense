@@ -11,5 +11,5 @@
     "baseUrl": "src",
     "declaration": true
   },
-  "files": ["src/index.ts"]
+  "include": ["src/**/*"]
 }

@@ -11,7 +11,7 @@ const ctx = require.context(
   /\/__examples__\/(.+)\.example\.(.+)$/
 );
 for (const path of ctx.keys()) {
-  moduleMap.set(path, ctx(path).default);
+  moduleMap.set(path.substr(2), ctx(path));
 }
 
 export default moduleMap;

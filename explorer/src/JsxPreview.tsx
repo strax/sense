@@ -40,7 +40,7 @@ const JsxPreview: React.SFC<{ example: Example }> = ({ example }) => {
   const root = example.view;
   if (React.isValidElement(root)) {
     return (
-      <SyntaxHighlighter language="jsx" useInlineStyles style={ghcolors}>
+      <SyntaxHighlighter language="jsx" style={ghcolors}>
         {toJSX(root, {
           showFunctions: true,
           maxInlineAttributesLineLength: 80

@@ -6,13 +6,10 @@ export default (
   <Example
     component={Button}
     description={markdown`
-A simple button for demonstration purposes.
-
-You can **click** the button.
+      A simple button for demonstration purposes.
+      You can **click** the button.
     `}
   >
-    <Button text="hiii" onClick={() => console.log("clicked!")}>
-      lit
-    </Button>
+    <Button text="foo bar baz" onClick={() => console.log("clicked!")} />
   </Example>
 );

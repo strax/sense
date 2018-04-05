@@ -15,7 +15,7 @@ interface Props {
 const ExampleMeta: React.SFC<{ example: Example }> = props => (
   <div>
     {props.example.description}
-    Component: {props.example.component.name}
+    {props.example.component && <>Component: {props.example.component.name}</>}
     <JsxPreview example={props.example} />
   </div>
 );
@@ -24,12 +24,13 @@ interface State {
   instance?: Example;
 }
 
-export default class ComponentView extends React.Component<Props, State> {
+export default class ExampleRenderer extends React.Component<Props, State> {
   private mountNode!: HTMLElement;
 
   public state: State = {};
 
   componentDidMount() {
+    this.mountNode.attachShadow({ mode: "open" });
     this.renderInNewInstance();
   }
 
@@ -43,7 +44,7 @@ export default class ComponentView extends React.Component<Props, State> {
     const subtree = React.cloneElement(this.props.example as any, {
       ref: (instance: Example) => this.setState({ instance })
     });
-    ReactDOM.render(subtree, this.mountNode);
+    ReactDOM.render(subtree, this.mountNode.shadowRoot! as any);
   }
 
   render() {

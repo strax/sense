@@ -1,35 +1,32 @@
 import React from "react";
 import { injectGlobal } from "styled-components";
 import ModuleMap from "ModuleMap";
-import ComponentView from "./ComponentView";
-
-injectGlobal`
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  font-family: "Roboto", sans-serif;
-}
-`;
+import ExampleRenderer from "./ExampleRenderer";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import styles from "./styles";
+import ModuleContext from "./ModuleContext";
+import ModuleList from "./ModuleList";
+import ModuleRoute from "./ModuleRoute";
 
 interface Props {
   modules: ModuleMap;
 }
 
 export default class App extends React.Component<Props> {
+  componentDidMount() {
+    injectGlobal`${styles}`;
+  }
+
   render() {
     return (
-      <div>
-        {Array.from(this.props.modules.entries()).map(([name, example]) => (
-          <ComponentView path={name} example={example} key={name} />
-        ))}
-      </div>
+      <ModuleContext.Provider value={this.props.modules}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={ModuleList} />
+            <Route path="/(.*)" component={ModuleRoute} />
+          </Switch>
+        </Router>
+      </ModuleContext.Provider>
     );
   }
 }

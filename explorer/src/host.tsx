@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ComponentView from "./ComponentView";
 import modules from "./guest";
 import App from "./App";
 import ModuleMap from "ModuleMap";

@@ -7,10 +7,15 @@ export interface Props {
    */
   text: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button: React.SFC<Props> = props => (
-  <button className={props.className} onClick={props.onClick}>
+  <button
+    className={props.className}
+    onClick={props.onClick}
+    disabled={props.disabled}
+  >
     {props.text}
   </button>
 );

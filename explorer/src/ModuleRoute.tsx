@@ -6,7 +6,8 @@ import styled from "styled-components";
 import ModuleHeader from "./ModuleHeader";
 
 const Container = styled.div`
-  margin: 2em;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export default class ModuleRoute extends React.Component<

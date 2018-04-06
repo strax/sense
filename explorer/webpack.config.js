@@ -10,8 +10,13 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: ["ts-loader"],
         exclude: /node_modules/
+      },
+      {
+        test: /\.tsx?$/,
+        use: ["@sense/webpack-ts-props-loader"],
+        include: path.resolve("../components/src/")
       }
     ]
   },

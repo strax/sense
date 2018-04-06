@@ -8,6 +8,7 @@ import ModuleHeader from "./ModuleHeader";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  padding-top: 50px;
 `;
 
 export default class ModuleRoute extends React.Component<

@@ -1,10 +1,10 @@
 import React from "react";
 import Markdown from "react-markdown";
-import { stripIndent } from "common-tags";
 import styled from "styled-components";
-export function markdown(segments) {
-    const joined = stripIndent(segments);
-    return React.createElement(Markdown, { source: joined });
+import { flatten, zip } from "ramda";
+export { default as props } from "./props";
+export function doc(segments, ...interpolations) {
+    return (React.createElement(React.Fragment, null, flatten(zip(segments.map((segment, i) => (React.createElement(Markdown, { source: segment.trimLeft(), key: i }))), interpolations))));
 }
 const VariantsContainer = styled.div `
   width: 100%;

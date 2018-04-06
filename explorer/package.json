@@ -9,6 +9,7 @@
     "start": "webpack-serve webpack.config.js --no-reload"
   },
   "dependencies": {
+    "@sense/webpack-ts-props-loader": "*",
     "cosmiconfig": "^4.0.0",
     "html-webpack-plugin": "^3.1.0",
     "react-element-to-jsx-string": "^13.2.0",
@@ -16,6 +17,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-syntax-highlighter": "^7.0.2",
+    "rebass": "^2.0.0-0",
     "redux": "^3.7.2",
     "styled-components": "^3.2.5",
     "ts-loader": "^4.1.0",
@@ -29,9 +31,12 @@
     "@types/react-router-dom": "^4.2.6",
     "@types/react-router-redux": "^5.0.13",
     "@types/react-syntax-highlighter": "^0.0.5",
+    "@types/rebass": "^0.2.19",
     "@types/webpack": "^4.1.2",
     "@types/webpack-env": "^1.13.5",
     "react-docgen-typescript": "^1.2.6",
+    "typescript-plugin-styled-components": "^0.0.5",
+    "typescript-styled-plugin": "^0.6.0",
     "webpack-serve": "^0.2.0"
   }
 }

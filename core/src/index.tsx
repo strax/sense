@@ -2,15 +2,30 @@ import React from "react";
 import Markdown from "react-markdown";
 import { stripIndent } from "common-tags";
 import styled from "styled-components";
+import { flatten, zip } from "ramda";
+export { default as props } from "./props";
 
 export interface Props {
   component?: React.ComponentType;
   description?: string | React.ReactElement<any>;
 }
 
-export function markdown(segments: TemplateStringsArray) {
-  const joined = stripIndent(segments);
-  return <Markdown source={joined} />;
+export function doc(
+  segments: TemplateStringsArray,
+  ...interpolations: React.ReactNode[]
+) {
+  return (
+    <>
+      {flatten(
+        zip(
+          segments.map((segment, i) => (
+            <Markdown source={segment.trimLeft()} key={i} />
+          )),
+          interpolations
+        )
+      )}
+    </>
+  );
 }
 
 const VariantsContainer = styled.div`

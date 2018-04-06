@@ -1,12 +1,13 @@
 import React from "react";
-import { Button } from "components";
-import { Example, markdown, Variants } from "@sense/core";
+import Button from "../Button";
+import { Example, Variants, doc, props } from "@sense/core";
 
 export default (
   <Example
-    description={markdown`
-      A simple button for demonstration purposes.
-      You can **click** the button.
+    description={doc`
+      This is a sample example for the Button component.
+
+      ${props(Button)}
     `}
   >
     <Variants>

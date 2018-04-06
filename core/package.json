@@ -7,9 +7,11 @@
   "license": "MIT",
   "dependencies": {
     "common-tags": "^1.7.2",
+    "ramda": "^0.25.0",
     "react-markdown": "^3.3.0"
   },
   "devDependencies": {
-    "@types/common-tags": "^1.4.0"
+    "@types/common-tags": "^1.4.0",
+    "@types/ramda": "types/npm-ramda#dist"
   }
 }

@@ -1,4 +1,9 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  appearance: none;
+`;
 
 export interface Props {
   className?: string;
@@ -11,13 +16,13 @@ export interface Props {
 }
 
 export const Button: React.SFC<Props> = props => (
-  <button
+  <StyledButton
     className={props.className}
     onClick={props.onClick}
     disabled={props.disabled}
   >
     {props.text}
-  </button>
+  </StyledButton>
 );
 
 export default Button;

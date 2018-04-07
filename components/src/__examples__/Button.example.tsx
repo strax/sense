@@ -6,13 +6,9 @@ export default (
   <Example
     description={doc`
       This is a sample example for the Button component.
-
       ${props(Button)}
     `}
   >
-    <Variants>
-      <Button text="Normal" onClick={() => console.log("clicked!")} />
-      <Button text="Disabled" disabled />
-    </Variants>
+    <Button text="Normal" onClick={() => console.log("clicked!")} />
   </Example>
 );

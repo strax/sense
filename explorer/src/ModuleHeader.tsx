@@ -12,15 +12,14 @@ const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  background: #fafafa;
+  background: #36413e;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 15px 2em;
-  color: #222;
+  padding: 0 1rem;
+  color: #f2f2f2;
   border-bottom: 1px solid #e5e5e5;
-  margin: 0 -5px;
 
   & > * {
     margin: 0 5px;
@@ -28,11 +27,11 @@ const Container = styled.div`
 `;
 
 const PathSpan = styled.span`
-  color: #aaa;
+  color: #5a6361;
 `;
 
 const Emphasis = styled.em`
-  color: #222;
+  color: #fefefe;
   font-style: normal;
 `;
 
@@ -49,7 +48,7 @@ const FormattedPath: React.SFC<{ path: string }> = props => {
 const BackLink = styled(Link)`
   display: block;
   text-decoration: none;
-  color: #666;
+  color: #fafafa;
   font-weight: 500;
   margin-right: 10px;
 `;

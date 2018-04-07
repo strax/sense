@@ -1,7 +1,8 @@
 import React from "react";
 import { Example } from "@sense/core";
 import toJSX from "react-element-to-jsx-string";
-import SyntaxHighlighter from "react-syntax-highlighter";
+// @ts-ignore
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
 import { ghcolors } from "react-syntax-highlighter/styles/prism";
 
 // const name = (element: React.ReactElement<any>) => {

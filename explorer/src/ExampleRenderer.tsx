@@ -5,6 +5,7 @@ import { ExampleElement } from "ModuleMap";
 import styled from "styled-components";
 import JsxPreview from "./JsxPreview";
 import transparent from "./transparent.svg";
+import { Panel } from "rebass";
 
 const COMPONENT_NAME_RE = /\/__examples__\/(.+)\.example\.(?:.+)$/;
 
@@ -21,14 +22,28 @@ const ExampleMeta: React.SFC<{ example: Example }> = props => (
   </div>
 );
 
+const SplitView = styled.div`
+  display: grid;
+  height: 100%;
+  grid-template-columns: 2fr 1fr;
+`;
+
+const RightPane = styled.div`
+  height: 100%;
+  border-left: 1px solid #647177;
+  padding: 1em;
+`;
+
 const ComponentContainer = styled.div`
-  border: 1px solid #dedede;
-  min-height: 100px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('${transparent}');
-  background-size: 20px 20px;
+  background: linear-gradient(90deg, #fff calc(10px - 2px), transparent 1%)
+      center,
+    linear-gradient(#fff calc(10px - 2px), transparent 1%) center,
+    rgba(0, 0, 0, 0.075);
+  background-size: 10px 10px;
 `;
 
 interface State {
@@ -60,12 +75,20 @@ export default class ExampleRenderer extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
-        {this.state.instance && <ExampleMeta example={this.state.instance} />}
-        <ComponentContainer
-          innerRef={node => node && (this.mountNode = node)}
-        />
-      </>
+      <SplitView>
+        <div>
+          <ComponentContainer
+            innerRef={node => node && (this.mountNode = node)}
+          />
+        </div>
+        {this.state.instance && (
+          <div>
+            <RightPane>
+              <ExampleMeta example={this.state.instance} />
+            </RightPane>
+          </div>
+        )}
+      </SplitView>
     );
   }
 }

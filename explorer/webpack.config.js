@@ -41,6 +41,10 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js"
   },
+  node: {
+    fs: "empty",
+    module: "empty"
+  },
   plugins: [
     new webpack.DefinePlugin({
       SENSE_GUEST_PATH: JSON.stringify(path.resolve("../components/src"))

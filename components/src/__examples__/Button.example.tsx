@@ -7,7 +7,7 @@ export default example(
   doc`
     A simple clickable Button.
 
-    It is possible to customize it even further.
+    It is possible to customize it even further by passing a custom argument.
 
     ${props(Button)}
   `,

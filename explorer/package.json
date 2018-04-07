@@ -12,6 +12,7 @@
     "@sense/webpack-ts-props-loader": "*",
     "cosmiconfig": "^4.0.0",
     "html-webpack-plugin": "^3.1.0",
+    "prettier": "1.7.1",
     "react-element-to-jsx-string": "^13.2.0",
     "react-markdown": "^3.3.0",
     "react-router": "^4.2.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/cosmiconfig": "^4.0.0",
+    "@types/prettier": "^1.10.0",
     "@types/react-router": "^4.0.23",
     "@types/react-router-dom": "^4.2.6",
     "@types/react-router-redux": "^5.0.13",

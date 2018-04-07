@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import modules from "./guest";
 import App from "./App";
-import ModuleMap from "ModuleMap";
+import ModuleMap from "./ModuleMap";
 
 declare const SENSE_MANIFEST: string;
 

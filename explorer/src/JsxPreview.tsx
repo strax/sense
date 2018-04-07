@@ -6,7 +6,7 @@ import SyntaxHighlighter from "react-syntax-highlighter/prism";
 import { ghcolors } from "react-syntax-highlighter/styles/prism";
 
 const JsxPreview: React.SFC<{ example: Example }> = ({ example }) => {
-  const root = example.view;
+  const root = example.render;
   if (React.isValidElement(root)) {
     return (
       <SyntaxHighlighter language="jsx" style={ghcolors}>

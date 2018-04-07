@@ -1,36 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Example } from "@sense/core";
-import { ExampleElement } from "ModuleMap";
-import styled from "styled-components";
+import { Example, IHostContext, HostContext } from "@sense/core";
+import styled, { StyleSheetManager } from "styled-components";
 import JsxPreview from "./JsxPreview";
 import transparent from "./transparent.svg";
 import { Panel } from "rebass";
+import DocumentationRenderer from "./DocumentationRenderer";
 
 const COMPONENT_NAME_RE = /\/__examples__\/(.+)\.example\.(?:.+)$/;
 
 interface Props {
   path: string;
-  example: ExampleElement;
+  example: Example;
 }
-
-const ExampleMeta: React.SFC<{ example: Example }> = props => (
-  <div>
-    {props.example.description}
-    {props.example.component && <>Component: {props.example.component.name}</>}
-    <JsxPreview example={props.example} />
-  </div>
-);
 
 const SplitView = styled.div`
   display: grid;
   height: 100%;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr auto;
 `;
 
 const RightPane = styled.div`
   height: 100%;
-  border-left: 1px solid #647177;
+  background: #21212b;
+  color: #fefefe;
+  -webkit-font-smoothing: antialiased;
   padding: 1em;
 `;
 
@@ -46,14 +40,8 @@ const ComponentContainer = styled.div`
   background-size: 10px 10px;
 `;
 
-interface State {
-  instance?: Example;
-}
-
-export default class ExampleRenderer extends React.Component<Props, State> {
+export default class ExampleRenderer extends React.Component<Props> {
   private mountNode!: HTMLElement;
-
-  public state: State = {};
 
   componentDidMount() {
     this.mountNode.attachShadow({ mode: "open" });
@@ -66,11 +54,21 @@ export default class ExampleRenderer extends React.Component<Props, State> {
     }
   }
 
-  renderInNewInstance() {
-    const subtree = React.cloneElement(this.props.example as any, {
-      ref: (instance: Example) => this.setState({ instance })
-    });
-    ReactDOM.render(subtree, this.mountNode.shadowRoot! as any);
+  private makeHostContext(): IHostContext {
+    return {
+      root: this.mountNode.shadowRoot!
+    };
+  }
+
+  private renderInNewInstance() {
+    ReactDOM.render(
+      <HostContext.Provider value={this.makeHostContext()}>
+        <StyleSheetManager target={this.mountNode.shadowRoot!}>
+          {this.props.example.render}
+        </StyleSheetManager>
+      </HostContext.Provider>,
+      this.mountNode.shadowRoot! as any
+    );
   }
 
   render() {
@@ -81,13 +79,11 @@ export default class ExampleRenderer extends React.Component<Props, State> {
             innerRef={node => node && (this.mountNode = node)}
           />
         </div>
-        {this.state.instance && (
-          <div>
-            <RightPane>
-              <ExampleMeta example={this.state.instance} />
-            </RightPane>
-          </div>
-        )}
+        <div>
+          <RightPane>
+            <DocumentationRenderer example={this.props.example} />
+          </RightPane>
+        </div>
       </SplitView>
     );
   }

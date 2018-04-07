@@ -12,6 +12,6 @@ export default css`
   }
 
   :root {
-    font-family: "Roboto", sans-serif;
+    font-family: "Proxima Nova", sans-serif;
   }
 `;

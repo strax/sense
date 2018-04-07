@@ -1,8 +1,7 @@
 import React from "react";
 
 export interface HostContext {
-  root: Element;
+  root: Node;
 }
 
-// @ts-ignore
-export default React.createContext(root);
+export default React.createContext<HostContext>();

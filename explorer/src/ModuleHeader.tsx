@@ -12,14 +12,15 @@ const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  background: #36413e;
+  background: #0b0b16;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0 1rem;
   color: #f2f2f2;
-  border-bottom: 1px solid #e5e5e5;
 
   & > * {
     margin: 0 5px;
@@ -27,7 +28,7 @@ const Container = styled.div`
 `;
 
 const PathSpan = styled.span`
-  color: #5a6361;
+  color: #ddd;
 `;
 
 const Emphasis = styled.em`
@@ -49,7 +50,6 @@ const BackLink = styled(Link)`
   display: block;
   text-decoration: none;
   color: #fafafa;
-  font-weight: 500;
   margin-right: 10px;
 `;
 

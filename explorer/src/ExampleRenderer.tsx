@@ -25,7 +25,8 @@ const RightPane = styled.div`
   background: #21212b;
   color: #fefefe;
   -webkit-font-smoothing: antialiased;
-  padding: 1em;
+  padding: 0 1rem;
+  overflow: hidden;
 `;
 
 const ComponentContainer = styled.div`

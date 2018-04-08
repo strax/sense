@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { ButtonSize } from "../Button";
+import Button from "../Button";
 import { example, doc, props } from "@sense/core";
 
 export default example(

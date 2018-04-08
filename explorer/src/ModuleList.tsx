@@ -35,7 +35,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default (props: void) => (
+export default () => (
   <Container>
     <Header>Available examples</Header>
     <ModuleContext.Consumer>

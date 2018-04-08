@@ -5,6 +5,8 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "declaration": true
   },
   "files": ["src/index.ts"]

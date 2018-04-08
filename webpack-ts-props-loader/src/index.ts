@@ -1,5 +1,5 @@
 import Parser from "./parser";
-import Project, { Statement } from "ts-simple-ast";
+import Project from "ts-simple-ast";
 import webpack from "webpack";
 import ts from "typescript";
 import * as fs from "fs";
@@ -17,7 +17,7 @@ const sourceFile = project.addExistingSourceFile("../example/src/Button.tsx");
 const parser = new Parser(sourceFile);
 parser.parse();
 
-export default function(this: webpack.loader.LoaderContext, source: string) {
+export default function(this: webpack.loader.LoaderContext) {
   const tsconfigPath = ts.findConfigFile(this.resourcePath, f =>
     fs.existsSync(f)
   );

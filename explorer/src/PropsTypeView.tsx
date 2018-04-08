@@ -1,6 +1,5 @@
 import React from "react";
 import { PropMetadata } from "@sense/webpack-ts-props-loader";
-import SyntaxHighlighter from "react-syntax-highlighter";
 import CodeBlock from "./CodeBlock";
 import prettier, { Options as PrettierOptions } from "prettier";
 

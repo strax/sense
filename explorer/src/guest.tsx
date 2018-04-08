@@ -1,4 +1,3 @@
-import React from "react";
 import ModuleMap from "./ModuleMap";
 
 const moduleMap = new ModuleMap();

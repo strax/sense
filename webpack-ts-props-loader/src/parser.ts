@@ -1,10 +1,8 @@
-import Project, {
-  printNode,
+import {
   Node,
   Symbol,
   Type,
   InterfaceDeclaration,
-  ObjectLiteralExpression,
   TypeLiteralNode,
   SourceFile
 } from "ts-simple-ast";

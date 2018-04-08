@@ -2,10 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Example, IHostContext, HostContext } from "@sense/core";
 import styled, { StyleSheetManager } from "styled-components";
-import JsxPreview from "./JsxPreview";
 import DocumentationRenderer from "./DocumentationRenderer";
-
-const COMPONENT_NAME_RE = /\/__examples__\/(.+)\.example\.(?:.+)$/;
 
 interface Props {
   path: string;

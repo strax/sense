@@ -2,11 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import modules from "./guest";
 import App from "./App";
-import ModuleMap from "./ModuleMap";
-
-interface Props {
-  components: ModuleMap;
-}
 
 const root =
   (module.hot && module.hot.data && module.hot.data.root) ||

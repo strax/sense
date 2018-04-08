@@ -9,7 +9,9 @@
     "moduleResolution": "node",
     "jsx": "react",
     "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "baseUrl": "src"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "../typings/**/*"]
 }

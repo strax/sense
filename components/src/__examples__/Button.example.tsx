@@ -1,7 +1,6 @@
 import React from "react";
 import Button, { ButtonSize } from "../Button";
 import { example, doc, props } from "@sense/core";
-import "common-tags";
 
 export default example(
   doc`

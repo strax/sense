@@ -7,16 +7,6 @@ import transform from "./transform";
 
 export * from "./types";
 
-const project = new Project({
-  tsConfigFilePath: "../example/tsconfig.json",
-  addFilesFromTsConfig: false
-});
-
-const sourceFile = project.addExistingSourceFile("../example/src/Button.tsx");
-
-const parser = new Parser(sourceFile);
-parser.parse();
-
 export default function(this: webpack.loader.LoaderContext) {
   const tsconfigPath = ts.findConfigFile(this.resourcePath, f =>
     fs.existsSync(f)

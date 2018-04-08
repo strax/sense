@@ -2,7 +2,6 @@ import React from "react";
 import JsxPreview from "./JsxPreview";
 import { Example, DocumentationNode } from "@sense/core";
 import Markdown from "react-markdown";
-import PropsList from "./PropsList";
 import PropsTypeView from "./PropsTypeView";
 import componentMetadata from "./componentMetadata";
 import styled from "styled-components";

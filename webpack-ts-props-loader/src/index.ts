@@ -8,13 +8,11 @@ import transform from "./transform";
 export * from "./types";
 
 const project = new Project({
-  tsConfigFilePath: "../components/tsconfig.json",
+  tsConfigFilePath: "../example/tsconfig.json",
   addFilesFromTsConfig: false
 });
 
-const sourceFile = project.addExistingSourceFile(
-  "../components/src/Button.tsx"
-);
+const sourceFile = project.addExistingSourceFile("../example/src/Button.tsx");
 
 const parser = new Parser(sourceFile);
 parser.parse();

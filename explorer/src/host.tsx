@@ -4,12 +4,6 @@ import modules from "./guest";
 import App from "./App";
 import ModuleMap from "./ModuleMap";
 
-declare const SENSE_MANIFEST: string;
-
-interface HotContext {
-  root: HTMLElement;
-}
-
 interface Props {
   components: ModuleMap;
 }

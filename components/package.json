@@ -8,12 +8,6 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.42",
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/node": "^7.0.0-beta.42",
-    "@babel/preset-env": "^7.0.0-beta.42",
-    "@babel/preset-react": "^7.0.0-beta.42",
-    "@babel/preset-typescript": "^7.0.0-beta.42",
     "rollup": "^0.57.1",
     "rollup-plugin-multi-entry": "^2.0.2",
     "rollup-plugin-typescript2": "^0.12.0"

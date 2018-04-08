@@ -25,7 +25,14 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: ["@sense/webpack-ts-props-loader"],
+        use: [
+          {
+            loader: "@sense/webpack-ts-props-loader",
+            options: {
+              tsconfig: path.resolve("../example/tsconfig.json")
+            }
+          }
+        ],
         include: path.resolve("../example/src/")
       }
     ]

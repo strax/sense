@@ -63,7 +63,7 @@ export interface Props {
   disabled?: boolean;
   size?: ButtonSize;
   /**
-   * The text content of the button
+   * The text content of the buttonz
    */
   text: string;
 }

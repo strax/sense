@@ -6,7 +6,7 @@ export default function transform(
   metadata: ReadonlyMap<Symbol, ComponentMetadata>
 ) {
   metadata.forEach((metadata, symbol) => {
-    sourceFile.addStatements(`
+    sourceFile.getChildSyntaxList().addChildText(`
       Object.defineProperty(${symbol.getName()}, Symbol.for("react/metadata"), {
         value: ${JSON.stringify(metadata)},
         writable: false,

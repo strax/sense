@@ -1,23 +1,23 @@
 import Parser from "./parser";
-import Project from "ts-simple-ast";
+import Project, { ts } from "ts-simple-ast";
 import webpack from "webpack";
-import ts from "typescript";
-import * as fs from "fs";
 import transform from "./transform";
-
+import memoize from "lodash.memoize";
+import loaderUtils from "loader-utils";
 export * from "./types";
 
-export default function(this: webpack.loader.LoaderContext) {
-  const tsconfigPath = ts.findConfigFile(this.resourcePath, f =>
-    fs.existsSync(f)
-  );
-  const project = new Project({
-    tsConfigFilePath: tsconfigPath,
-    addFilesFromTsConfig: false
+const getProject = memoize((tsconfigPath: string) => {
+  return new Project({
+    tsConfigFilePath: tsconfigPath
   });
-  project.addExistingSourceFile(this.resourcePath);
-  const sourceFile = project.getSourceFile(this.resourcePath);
+});
+
+export default async function(this: webpack.loader.LoaderContext) {
+  const done = this.async();
+  const tsconfigPath = loaderUtils.getOptions(this).tsconfig as string;
+  const sourceFile = getProject(tsconfigPath).getSourceFile(this.resourcePath);
+  await sourceFile.refreshFromFileSystem();
   const parser = new Parser(sourceFile);
   const parsed = parser.parse();
-  return transform(sourceFile, parsed).print();
+  done(null, transform(sourceFile, parsed).getFullText());
 }

@@ -37,7 +37,7 @@ const ComponentContainer = styled.div`
   background: linear-gradient(90deg, #fff calc(10px - 2px), transparent 1%)
       center,
     linear-gradient(#fff calc(10px - 2px), transparent 1%) center,
-    rgba(0, 0, 0, 0.075);
+    #ddd;
   background-size: 10px 10px;
 `;
 

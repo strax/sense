@@ -26,15 +26,14 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: ["@sense/webpack-ts-props-loader"],
-        include: path.resolve("../components/src/")
+        include: path.resolve("../example/src/")
       }
     ]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
     alias: {
-      manifest$: path.resolve("../manifest.json"),
-      source: path.resolve("../components/src/")
+      source: path.resolve("../example/src/")
     }
   },
   output: {
@@ -47,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      SENSE_GUEST_PATH: JSON.stringify(path.resolve("../components/src"))
+      SENSE_GUEST_PATH: JSON.stringify(path.resolve("../example/src"))
     }),
     new HtmlWebpackPlugin(),
     new webpack.NamedModulesPlugin(),

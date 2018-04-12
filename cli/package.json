@@ -5,5 +5,9 @@
   "license": "MIT",
   "bin": {
     "sense": "dist/start.js"
+  },
+  "dependencies": {
+    "pkginfo": "^0.4.1",
+    "webpack-log": "^1.2.0"
   }
 }

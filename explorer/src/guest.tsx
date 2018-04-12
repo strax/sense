@@ -2,13 +2,10 @@ import ModuleMap from "./ModuleMap";
 
 const moduleMap = new ModuleMap();
 
-declare const SENSE_GUEST_PATH: string;
+declare const CWD: string;
+declare const EXAMPLE_FILE_PATTERN: RegExp;
 
-const ctx = require.context(
-  SENSE_GUEST_PATH,
-  true,
-  /\/__examples__\/(.+)\.example\.(.+)$/
-);
+const ctx = require.context(CWD, true, EXAMPLE_FILE_PATTERN);
 for (const path of ctx.keys()) {
   moduleMap.set(path.substr(2), ctx(path));
 }

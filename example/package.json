@@ -15,5 +15,8 @@
   },
   "peerDependencies": {
     "react": "^16.2.0"
+  },
+  "sense": {
+    "examples": "./src/__examples__/*.example.*"
   }
 }

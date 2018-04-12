@@ -40,6 +40,6 @@
     "react-docgen-typescript": "^1.2.6",
     "typescript-plugin-styled-components": "^0.0.5",
     "typescript-styled-plugin": "^0.6.0",
-    "webpack-serve": "^0.2.0"
+    "webpack-serve": "^0.3.1"
   }
 }

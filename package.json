@@ -21,5 +21,10 @@
     "prettier": "^1.11.1",
     "ts-node": "^5.0.1"
   },
-  "workspaces": ["example", "core", "explorer", "webpack-ts-props-loader"]
+  "workspaces": [
+    "example",
+    "core",
+    "explorer",
+    "webpack-ts-props-loader"
+  ]
 }

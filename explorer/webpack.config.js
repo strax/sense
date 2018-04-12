@@ -6,7 +6,7 @@ const StyledComponentsTransformer = require("typescript-plugin-styled-components
 module.exports = {
   mode: "development",
   devtool: "source-map",
-  entry: ["./src/host.tsx"],
+  entry: [path.join(__dirname, "src/host.tsx")],
   module: {
     rules: [
       {
@@ -33,14 +33,14 @@ module.exports = {
             }
           }
         ],
-        include: path.resolve("../example/src/")
+        include: path.join(process.cwd(), "src")
       }
     ]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
     alias: {
-      source: path.resolve("../example/src/")
+      source: path.join(process.cwd(), "src")
     }
   },
   output: {

@@ -1,9 +1,9 @@
 {
-  "name": "@sense/app",
+  "name": "@sense/explorer",
   "version": "0.0.1",
   "license": "MIT",
   "bin": {
-    "sense": "dist/cli.js"
+    "sense": "dist/server.js"
   },
   "scripts": {
     "start": "webpack-serve webpack.config.js --no-reload"

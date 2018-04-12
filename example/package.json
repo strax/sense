@@ -10,7 +10,8 @@
   "devDependencies": {
     "rollup": "^0.57.1",
     "rollup-plugin-multi-entry": "^2.0.2",
-    "rollup-plugin-typescript2": "^0.12.0"
+    "rollup-plugin-typescript2": "^0.12.0",
+    "@sense/cli": "*"
   },
   "peerDependencies": {
     "react": "^16.2.0"

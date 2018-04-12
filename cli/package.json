@@ -1,0 +1,9 @@
+{
+  "name": "@sense/cli",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "sense": "dist/start.js"
+  }
+}

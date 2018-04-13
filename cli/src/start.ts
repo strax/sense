@@ -5,7 +5,6 @@ import webpackConfig from "@sense/explorer/webpack.config.js";
 import { version } from "@sense/explorer/package.json";
 import createLogger from "webpack-log";
 import cosmiconfig from "cosmiconfig";
-import minimatch from "minimatch";
 
 interface Config {
   examples: string;

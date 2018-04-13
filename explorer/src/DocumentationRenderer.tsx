@@ -42,7 +42,7 @@ const DocumentationRenderer: React.SFC<{ example: Example }> = props => (
     {props.example.description.map(formatDocumentationNode)}
     <Section>
       <SectionHeader>Example source</SectionHeader>
-      <JsxPreview example={props.example} />
+      <JsxPreview tree={props.example.render} />
     </Section>
   </>
 );

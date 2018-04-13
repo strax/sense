@@ -12,6 +12,7 @@
     "@sense/webpack-ts-props-loader": "*",
     "cosmiconfig": "^4.0.0",
     "html-webpack-plugin": "^3.1.0",
+    "micromatch": "^3.1.10",
     "prettier": "1.7.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -40,6 +41,10 @@
     "@types/webpack": "^4.1.2",
     "@types/webpack-env": "^1.13.5",
     "typescript-plugin-styled-components": "^0.0.5",
-    "typescript-styled-plugin": "^0.6.0"
+    "typescript-styled-plugin": "^0.6.0",
+    "@sense/cli": "*"
+  },
+  "sense": {
+    "examples": "src/**/__examples__/*.example.*"
   }
 }

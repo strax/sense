@@ -1,5 +1,5 @@
 import Parser from "./parser";
-import Project, { ts } from "ts-simple-ast";
+import Project from "ts-simple-ast";
 import webpack from "webpack";
 import transform from "./transform";
 import memoize from "lodash.memoize";

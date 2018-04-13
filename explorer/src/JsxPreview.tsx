@@ -1,14 +1,16 @@
 import React from "react";
-import { Example } from "@sense/core";
 import toJSX from "react-element-to-jsx-string";
 import CodeBlock from "./CodeBlock";
 
-const JsxPreview: React.SFC<{ example: Example }> = ({ example }) => {
-  const root = example.render;
-  if (React.isValidElement(root)) {
+interface Props {
+  tree: React.ReactNode;
+}
+
+const JsxPreview: React.SFC<Props> = ({ tree }) => {
+  if (React.isValidElement(tree)) {
     return (
       <CodeBlock language="jsx">
-        {toJSX(root, {
+        {toJSX(tree, {
           showFunctions: true,
           maxInlineAttributesLineLength: 80
         })}

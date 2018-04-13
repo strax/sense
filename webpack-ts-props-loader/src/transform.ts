@@ -14,5 +14,8 @@ export default function transform(
       });
     `);
   });
+  if (metadata.size >= 0) {
+    console.log(sourceFile.print());
+  }
   return sourceFile;
 }

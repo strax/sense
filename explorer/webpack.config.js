@@ -2,10 +2,10 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyledComponentsTransformer = require("typescript-plugin-styled-components");
-const minimatch = require("minimatch");
+const micromatch = require("micromatch");
 
 module.exports = config => {
-  const exampleFilePattern = minimatch.makeRe(config.examples);
+  const exampleFilePattern = micromatch.makeRe(config.examples);
   return {
     mode: "development",
     devtool: "source-map",
@@ -25,19 +25,19 @@ module.exports = config => {
             }
           ],
           exclude: /node_modules/
-        },
-        {
-          test: /\.tsx?$/,
-          use: [
-            {
-              loader: "@sense/webpack-ts-props-loader",
-              options: {
-                tsconfig: path.join(process.cwd(), config.tsconfig)
-              }
-            }
-          ],
-          include: path.join(process.cwd())
         }
+        // {
+        //   test: /\.tsx?$/,
+        //   use: [
+        //     {
+        //       loader: "@sense/webpack-ts-props-loader",
+        //       options: {
+        //         tsconfig: path.join(process.cwd(), config.tsconfig)
+        //       }
+        //     }
+        //   ],
+        //   include: process.cwd()
+        // }
       ]
     },
     resolve: {
@@ -64,9 +64,9 @@ module.exports = config => {
       new webpack.EnvironmentPlugin({ NODE_ENV: "development" })
     ],
     serve: {
-      dev: {
-        stats: "minimal"
-      }
+      // dev: {
+      //   stats: "minimal"
+      // }
     }
   };
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import ModuleContext from "./ModuleContext";
+import ModuleContext from "../ModuleContext";
 import { RouteComponentProps } from "react-router";
 import ExampleRenderer from "./ExampleRenderer";
 import styled from "styled-components";

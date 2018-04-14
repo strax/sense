@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Example, IHostContext, HostContext } from "@sense/core";
 import styled, { StyleSheetManager } from "styled-components";
-import DocumentationRenderer from "./DocumentationRenderer";
+import DocumentationRenderer from "../DocumentationRenderer";
 import ErrorBoundary from "./ErrorBoundary";
 
 interface Props {

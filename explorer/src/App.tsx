@@ -4,7 +4,7 @@ import ModuleMap from "./ModuleMap";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import ModuleContext from "./ModuleContext";
-import ModuleList from "./ModuleList";
+import ModuleListRoute from "./ModuleListRoute";
 import ModuleRoute from "./ModuleRoute";
 
 interface Props {

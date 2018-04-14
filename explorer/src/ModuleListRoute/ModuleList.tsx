@@ -1,5 +1,5 @@
 import React from "react";
-import ModuleContext from "./ModuleContext";
+import ModuleContext from "../ModuleContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 

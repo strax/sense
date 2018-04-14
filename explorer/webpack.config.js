@@ -10,7 +10,7 @@ module.exports = config => {
   return {
     mode: "development",
     devtool: "eval",
-    entry: [path.join(__dirname, "src/host.tsx")],
+    entry: [path.join(__dirname, "src/index.tsx")],
     module: {
       rules: [
         {

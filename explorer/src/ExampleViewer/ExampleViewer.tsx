@@ -4,6 +4,7 @@ import { Example, IHostContext, HostContext } from "@sense/core";
 import styled, { StyleSheetManager } from "styled-components";
 import DocumentationRenderer from "../DocumentationRenderer";
 import ErrorBoundary from "./ErrorBoundary";
+import ModuleHeader from "./ModuleHeader";
 
 interface Props {
   path: string;
@@ -37,7 +38,7 @@ const ComponentContainer = styled.div`
   background-size: 10px 10px;
 `;
 
-export default class ExampleRenderer extends React.Component<Props> {
+export default class ExampleViewer extends React.Component<Props> {
   private mountNode!: HTMLElement;
 
   componentDidMount() {
@@ -78,18 +79,21 @@ export default class ExampleRenderer extends React.Component<Props> {
 
   render() {
     return (
-      <SplitView>
-        <div>
-          <ComponentContainer
-            innerRef={node => node && (this.mountNode = node)}
-          />
-        </div>
-        <div>
-          <RightPane>
-            <DocumentationRenderer example={this.props.example} />
-          </RightPane>
-        </div>
-      </SplitView>
+      <>
+        <ModuleHeader path={this.props.path} />
+        <SplitView>
+          <div>
+            <ComponentContainer
+              innerRef={node => node && (this.mountNode = node)}
+            />
+          </div>
+          <div>
+            <RightPane>
+              <DocumentationRenderer example={this.props.example} />
+            </RightPane>
+          </div>
+        </SplitView>
+      </>
     );
   }
 }

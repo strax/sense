@@ -1,1 +1,1 @@
-export { default } from "./ModuleList";
+export { default } from "./IndexRoute";

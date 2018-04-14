@@ -1,14 +1,12 @@
 import React from "react";
-import ModuleContext from "../ModuleContext";
+import ModuleContext from "./ModuleContext";
+import ExampleViewer from "./ExampleViewer";
 import { RouteComponentProps } from "react-router";
-import ExampleRenderer from "./ExampleRenderer";
 import styled from "styled-components";
-import ModuleHeader from "./ModuleHeader";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  padding-top: 50px;
 `;
 
 export default class ModuleRoute extends React.Component<
@@ -20,14 +18,9 @@ export default class ModuleRoute extends React.Component<
       <Container>
         <ModuleContext.Consumer>
           {modules => {
-            return (
-              <>
-                <ModuleHeader path={path} />
-                {Object.entries(modules!.get(path)!).map(([name, example]) => (
-                  <ExampleRenderer key={name} example={example} path={path} />
-                ))}
-              </>
-            );
+            // TODO: Take named exports into account
+            const example = modules!.get(path)!.default;
+            return <ExampleViewer example={example} path={path} />;
           }}
         </ModuleContext.Consumer>
       </Container>

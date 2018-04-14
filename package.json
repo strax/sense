@@ -13,5 +13,8 @@
     "explorer",
     "webpack-ts-props-loader",
     "cli"
-  ]
+  ],
+  "jest": {
+    "projects": ["<rootDir>/webpack-ts-props-loader"]
+  }
 }

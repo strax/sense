@@ -15,9 +15,10 @@ const getProject = memoize((tsconfigPath: string) => {
 export default async function(this: webpack.loader.LoaderContext) {
   const done = this.async();
   const tsconfigPath = loaderUtils.getOptions(this).tsconfig as string;
-  const sourceFile = getProject(tsconfigPath).getSourceFile(this.resourcePath);
+  const project = getProject(tsconfigPath);
+  const sourceFile = project.getSourceFile(this.resourcePath);
   await sourceFile.refreshFromFileSystem();
-  const parser = new Parser(sourceFile);
+  const parser = new Parser(sourceFile, project.getTypeChecker());
   const parsed = parser.parse();
   done(null, transform(sourceFile, parsed).getFullText());
 }

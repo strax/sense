@@ -9,5 +9,5 @@
     "noUnusedParameters": true,
     "declaration": true
   },
-  "files": ["src/index.ts"]
+  "include": ["src/**/*"]
 }

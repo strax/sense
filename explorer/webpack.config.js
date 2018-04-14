@@ -25,19 +25,20 @@ module.exports = config => {
             }
           ],
           exclude: /node_modules/
+        },
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: "@sense/webpack-ts-props-loader",
+              options: {
+                tsconfig: path.join(process.cwd(), config.tsconfig)
+              }
+            }
+          ],
+          include: process.cwd(),
+          exclude: /node_modules/
         }
-        // {
-        //   test: /\.tsx?$/,
-        //   use: [
-        //     {
-        //       loader: "@sense/webpack-ts-props-loader",
-        //       options: {
-        //         tsconfig: path.join(process.cwd(), config.tsconfig)
-        //       }
-        //     }
-        //   ],
-        //   include: process.cwd()
-        // }
       ]
     },
     resolve: {

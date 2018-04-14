@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fixtures anonymousPropType.tsx 1`] = `
+"import React from \\"react\\";
+
+export default class Comp extends React.Component<{ foo: string }> {
+  render() {
+    return null;
+  }
+}
+
+      Object.defineProperty(Comp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Comp\\",\\"props\\":[{\\"key\\":\\"foo\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;
+
+exports[`fixtures classDefaultExport.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  some: number;
+}
+
+export default class Comp extends React.Component<Props> {
+  render() {
+    return <div>foo</div>;
+  }
+}
+
+      Object.defineProperty(Comp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Comp\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"some\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;
+
+exports[`fixtures classNamedExport.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  some: number;
+}
+
+export class Comp extends React.Component<Props> {
+  render() {
+    return <div>foo</div>;
+  }
+}
+
+      Object.defineProperty(Comp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Comp\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"some\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;
+
+exports[`fixtures nonExportedComponents.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  other: number;
+  delta: number;
+}
+
+const Foo: React.SFC<Props> = props => <div>Hello world!</div>;
+
+const Bar: React.StatelessComponent<Props> = props => <div>Hello bar!</div>;
+
+class Comp extends React.Component<Props> {
+  render() {
+    return <div>foo</div>;
+  }
+}
+"
+`;
+
+exports[`fixtures nonReactClass.tsx 1`] = `
+"export default class Foo {}
+
+export class Bar {}
+"
+`;
+
+exports[`fixtures optionalPropType.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  some?: number;
+}
+
+export default class Comp extends React.Component<Props> {
+  render() {
+    return <div>foo</div>;
+  }
+}
+
+      Object.defineProperty(Comp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Comp\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"some\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":true}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;
+
+exports[`fixtures propDocumentation.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  /**
+   * A some property.
+   */
+  some: number;
+}
+
+export default class Comp extends React.Component<Props> {
+  render() {
+    return <div>foo</div>;
+  }
+}
+
+      Object.defineProperty(Comp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Comp\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"some\\",\\"description\\":\\"A some property.\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;
+
+exports[`fixtures statelessComponent.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  other: number;
+  delta: number;
+}
+
+export const Foo: React.SFC<Props> = props => <div>Hello world!</div>;
+
+export const Bar: React.StatelessComponent<Props> = props => (
+  <div>Hello bar!</div>
+);
+
+      Object.defineProperty(Foo, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Foo\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"other\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false},{\\"key\\":\\"delta\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+
+      Object.defineProperty(Bar, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"Bar\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"other\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false},{\\"key\\":\\"delta\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+    
+"
+`;

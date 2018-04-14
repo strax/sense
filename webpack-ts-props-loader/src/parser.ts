@@ -4,16 +4,28 @@ import {
   Type,
   InterfaceDeclaration,
   TypeLiteralNode,
-  SourceFile
+  SourceFile,
+  ClassDeclaration,
+  TypeChecker
 } from "ts-simple-ast";
 import ts from "typescript";
 import assert from "assert";
 import { ComponentMetadata, PropMetadata } from "./types";
 
+function getClassSymbol(node: ClassDeclaration): Symbol {
+  // @ts-ignore
+  if (node.compilerNode.localSymbol) {
+    // @ts-ignore
+    return node.compilerNode.localSymbol;
+  } else {
+    return node.getSymbol();
+  }
+}
+
 export default class Parser {
   private parsed = new Map<Symbol, ComponentMetadata>();
 
-  constructor(private source: SourceFile) {}
+  constructor(private source: SourceFile, private checker: TypeChecker) {}
 
   parse(): ReadonlyMap<Symbol, ComponentMetadata> {
     for (const sym of this.source.getExportSymbols()) {
@@ -60,7 +72,7 @@ export default class Parser {
         this.parseStatelessComponent(node);
         break;
       case ts.SyntaxKind.ClassDeclaration:
-        this.parseClassComponent(node);
+        this.parseClassComponent(node as ClassDeclaration);
     }
   }
 
@@ -74,9 +86,10 @@ export default class Parser {
     }
   }
 
-  private parseClassComponent(node: Node<any>) {
-    const sym = node.getSymbol();
+  private parseClassComponent(node: ClassDeclaration) {
     const type = node.getType();
+    const sym = getClassSymbol(node);
+    console.dir(sym);
     type.getBaseTypes().forEach(supertype => {
       if (supertype.getSymbol().getName() === "Component") {
         const props = supertype.getTypeArguments()[0];

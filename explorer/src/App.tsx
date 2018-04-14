@@ -1,6 +1,5 @@
 import React from "react";
 import { injectGlobal } from "styled-components";
-import ModuleMap from "./ModuleMap";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import AppContext from "./AppContext";

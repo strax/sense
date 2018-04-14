@@ -1,4 +1,3 @@
-import ModuleMap from "./ModuleMap";
 import { Example } from "@sense/core";
 
 export interface ExampleDefinition {

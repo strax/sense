@@ -5,8 +5,7 @@ import {
   InterfaceDeclaration,
   TypeLiteralNode,
   SourceFile,
-  ClassDeclaration,
-  TypeChecker
+  ClassDeclaration
 } from "ts-simple-ast";
 import ts from "typescript";
 import assert from "assert";
@@ -25,7 +24,7 @@ function getClassSymbol(node: ClassDeclaration): Symbol {
 export default class Parser {
   private parsed = new Map<Symbol, ComponentMetadata>();
 
-  constructor(private source: SourceFile, private checker: TypeChecker) {}
+  constructor(private source: SourceFile) {}
 
   parse(): ReadonlyMap<Symbol, ComponentMetadata> {
     for (const sym of this.source.getExportSymbols()) {
@@ -89,7 +88,6 @@ export default class Parser {
   private parseClassComponent(node: ClassDeclaration) {
     const type = node.getType();
     const sym = getClassSymbol(node);
-    console.dir(sym);
     type.getBaseTypes().forEach(supertype => {
       if (supertype.getSymbol().getName() === "Component") {
         const props = supertype.getTypeArguments()[0];

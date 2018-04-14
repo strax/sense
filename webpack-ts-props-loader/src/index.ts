@@ -18,7 +18,7 @@ export default async function(this: webpack.loader.LoaderContext) {
   const project = getProject(tsconfigPath);
   const sourceFile = project.getSourceFile(this.resourcePath);
   await sourceFile.refreshFromFileSystem();
-  const parser = new Parser(sourceFile, project.getTypeChecker());
+  const parser = new Parser(sourceFile);
   const parsed = parser.parse();
   done(null, transform(sourceFile, parsed).getFullText());
 }

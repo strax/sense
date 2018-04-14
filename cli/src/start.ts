@@ -29,7 +29,7 @@ async function start() {
   const config = await mkConfig();
   console.dir(config);
 
-  serve({ config: webpackConfig(config), hot: { logLevel: "error" } });
+  serve({ config: webpackConfig(config) });
 }
 
 start();

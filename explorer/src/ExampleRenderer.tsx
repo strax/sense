@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Example, IHostContext, HostContext } from "@sense/core";
 import styled, { StyleSheetManager } from "styled-components";
 import DocumentationRenderer from "./DocumentationRenderer";
+import ErrorBoundary from "./ErrorBoundary";
 
 interface Props {
   path: string;
@@ -50,6 +51,14 @@ export default class ExampleRenderer extends React.Component<Props> {
     }
   }
 
+  componentWillUnmount() {
+    this.dispose();
+  }
+
+  private dispose() {
+    ReactDOM.unmountComponentAtNode(this.mountNode);
+  }
+
   private makeHostContext(): IHostContext {
     return {
       root: this.mountNode.shadowRoot!
@@ -60,7 +69,7 @@ export default class ExampleRenderer extends React.Component<Props> {
     ReactDOM.render(
       <HostContext.Provider value={this.makeHostContext()}>
         <StyleSheetManager target={this.mountNode.shadowRoot!}>
-          {this.props.example.render}
+          <ErrorBoundary>{this.props.example.render}</ErrorBoundary>
         </StyleSheetManager>
       </HostContext.Provider>,
       this.mountNode.shadowRoot! as any

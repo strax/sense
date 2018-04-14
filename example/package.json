@@ -8,15 +8,20 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "devDependencies": {
+    "@sense/cli": "*",
+    "@types/stacktrace-js": "^0.0.32",
     "rollup": "^0.57.1",
     "rollup-plugin-multi-entry": "^2.0.2",
-    "rollup-plugin-typescript2": "^0.12.0",
-    "@sense/cli": "*"
+    "rollup-plugin-typescript2": "^0.12.0"
   },
   "peerDependencies": {
     "react": "^16.2.0"
   },
   "sense": {
     "examples": "src/**/__examples__/*.example.*"
+  },
+  "dependencies": {
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
+    "stacktrace-js": "^2.0.0"
   }
 }

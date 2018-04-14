@@ -10,7 +10,6 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
     "plugins": [{ "name": "typescript-styled-plugin" }]

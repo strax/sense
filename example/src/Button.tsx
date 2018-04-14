@@ -68,17 +68,22 @@ export interface Props {
   text: string;
 }
 
-export const Button: React.SFC<Props> = props => (
-  <StyledButton
-    size={props.size}
-    className={props.className}
-    onClick={props.onClick}
-    tabIndex={1}
-    role="button"
-    disabled={props.disabled}
-  >
-    {props.text}
-  </StyledButton>
-);
+export const Button: React.SFC<Props> = props => {
+  return (
+    <StyledButton
+      size={props.size}
+      className={props.className}
+      onClick={e => {
+        e.stopPropagation();
+        throw new TypeError("Uff");
+      }}
+      tabIndex={1}
+      role="button"
+      disabled={props.disabled}
+    >
+      {props.text}
+    </StyledButton>
+  );
+};
 
 export default Button;

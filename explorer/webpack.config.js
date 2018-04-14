@@ -3,12 +3,13 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyledComponentsTransformer = require("typescript-plugin-styled-components");
 const micromatch = require("micromatch");
+const ForkTsCheckerPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = config => {
   const exampleFilePattern = micromatch.makeRe(config.examples);
   return {
     mode: "development",
-    devtool: "source-map",
+    devtool: "eval",
     entry: [path.join(__dirname, "src/host.tsx")],
     module: {
       rules: [
@@ -20,7 +21,8 @@ module.exports = config => {
               options: {
                 getCustomTransformers: () => ({
                   before: [StyledComponentsTransformer.createTransformer()]
-                })
+                }),
+                transpileOnly: true
               }
             }
           ],
@@ -49,7 +51,8 @@ module.exports = config => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].js"
+      filename: "[name].js",
+      devtoolModuleFilenameTemplate: "/[absolute-resource-path]"
     },
     node: {
       fs: "empty",
@@ -62,7 +65,8 @@ module.exports = config => {
       }),
       new HtmlWebpackPlugin(),
       new webpack.NamedModulesPlugin(),
-      new webpack.EnvironmentPlugin({ NODE_ENV: "development" })
+      new webpack.EnvironmentPlugin({ NODE_ENV: "development" }),
+      new ForkTsCheckerPlugin()
     ],
     serve: {
       // dev: {

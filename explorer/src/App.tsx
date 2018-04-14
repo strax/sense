@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import styles from "./styles";
 import ModuleContext from "./ModuleContext";
 import IndexRoute from "./IndexRoute";
-import ModuleRoute from "./ModuleRoute";
+import ShowExampleRoute from "./ShowExampleRoute";
 
 interface Props {
   modules: ModuleMap;
@@ -22,7 +22,7 @@ export default class App extends React.Component<Props> {
         <Router>
           <Switch>
             <Route exact path="/" component={IndexRoute} />
-            <Route path="/(.*)" component={ModuleRoute} />
+            <Route path="/(.*)" component={ShowExampleRoute} />
           </Switch>
         </Router>
       </ModuleContext.Provider>

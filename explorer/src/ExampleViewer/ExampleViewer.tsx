@@ -12,6 +12,7 @@ interface Props {
 }
 
 const SplitView = styled.div`
+  margin-top: 50px;
   display: grid;
   height: 100%;
   grid-template-columns: 1fr auto;

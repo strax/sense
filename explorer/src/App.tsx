@@ -3,12 +3,13 @@ import { injectGlobal } from "styled-components";
 import ModuleMap from "./ModuleMap";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import styles from "./styles";
-import ModuleContext from "./ModuleContext";
+import AppContext from "./AppContext";
 import IndexRoute from "./IndexRoute";
 import ShowExampleRoute from "./ShowExampleRoute";
+import { ExampleDefinition } from "./examples";
 
 interface Props {
-  modules: ModuleMap;
+  examples: ExampleDefinition[];
 }
 
 export default class App extends React.Component<Props> {
@@ -18,14 +19,14 @@ export default class App extends React.Component<Props> {
 
   render() {
     return (
-      <ModuleContext.Provider value={this.props.modules}>
+      <AppContext.Provider value={{ examples: this.props.examples }}>
         <Router>
           <Switch>
             <Route exact path="/" component={IndexRoute} />
             <Route path="/(.*)" component={ShowExampleRoute} />
           </Switch>
         </Router>
-      </ModuleContext.Provider>
+      </AppContext.Provider>
     );
   }
 }

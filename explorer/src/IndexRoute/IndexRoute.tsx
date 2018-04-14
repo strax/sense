@@ -1,5 +1,5 @@
 import React from "react";
-import ModuleContext from "../ModuleContext";
+import AppContext from "../AppContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -38,17 +38,19 @@ const StyledLink = styled(Link)`
 export default () => (
   <Container>
     <Header>Available examples</Header>
-    <ModuleContext.Consumer>
-      {modules =>
-        modules && (
+    <AppContext.Consumer>
+      {ctx =>
+        ctx && (
           <List>
-            {Array.from(modules.keys()).map(k => (
-              <Row key={k}>
-                <StyledLink to={k}>{k}</StyledLink>
+            {ctx.examples.map(example => (
+              <Row key={example.path + ":" + example.name}>
+                <StyledLink to={example.path}>
+                  {example.path}:{example.name}
+                </StyledLink>
               </Row>
             ))}
           </List>
         )}
-    </ModuleContext.Consumer>
+    </AppContext.Consumer>
   </Container>
 );

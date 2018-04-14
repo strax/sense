@@ -1,8 +1,8 @@
 import React from "react";
-import ModuleContext from "./ModuleContext";
 import ExampleViewer from "./ExampleViewer";
 import { RouteComponentProps } from "react-router";
 import styled from "styled-components";
+import AppContext from "./AppContext";
 
 const Container = styled.div`
   width: 100vw;
@@ -16,13 +16,13 @@ export default class ModuleRoute extends React.Component<
     const path = this.props.match.params[0];
     return (
       <Container>
-        <ModuleContext.Consumer>
-          {modules => {
+        <AppContext.Consumer>
+          {ctx => {
             // TODO: Take named exports into account
-            const example = modules!.get(path)!.default;
-            return <ExampleViewer example={example} path={path} />;
+            const example = ctx!.examples.find(x => x.path === path)!;
+            return <ExampleViewer example={example.example} path={path} />;
           }}
-        </ModuleContext.Consumer>
+        </AppContext.Consumer>
       </Container>
     );
   }

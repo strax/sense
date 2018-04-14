@@ -39,18 +39,17 @@ export default () => (
   <Container>
     <Header>Available examples</Header>
     <AppContext.Consumer>
-      {ctx =>
-        ctx && (
-          <List>
-            {ctx.examples.map(example => (
-              <Row key={example.path + ":" + example.name}>
-                <StyledLink to={example.path}>
-                  {example.path}:{example.name}
-                </StyledLink>
-              </Row>
-            ))}
-          </List>
-        )}
+      {ctx => (
+        <List>
+          {ctx!.examples.map(example => (
+            <Row key={example.path + ":" + example.name}>
+              <StyledLink to={example.path}>
+                {example.path}:{example.name}
+              </StyledLink>
+            </Row>
+          ))}
+        </List>
+      )}
     </AppContext.Consumer>
   </Container>
 );

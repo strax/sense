@@ -9,7 +9,7 @@ import ShowExampleRoute from "./ShowExampleRoute";
 import { ExampleDefinition } from "./examples";
 
 interface Props {
-  examples: ExampleDefinition[];
+  examples: ReadonlyArray<ExampleDefinition>;
 }
 
 export default class App extends React.Component<Props> {

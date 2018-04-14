@@ -1,4 +1,3 @@
-import assert from "assert";
 import compiler from "./compiler";
 import fs from "fs";
 import path from "path";

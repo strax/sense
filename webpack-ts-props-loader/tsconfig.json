@@ -7,7 +7,8 @@
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "declaration": true
+    "declaration": true,
+    "jsx": "react"
   },
   "include": ["src/**/*"]
 }

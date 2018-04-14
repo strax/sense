@@ -171,3 +171,25 @@ export const Bar: React.StatelessComponent<Props> = props => (
     
 "
 `;
+
+exports[`fixtures statelessComponentDefaultExport.tsx 1`] = `
+"import React from \\"react\\";
+
+interface Props {
+  name: string;
+  other: number;
+  delta: number;
+}
+
+const SomeComp: React.SFC<Props> = props => <div>Hi</div>;
+
+export default SomeComp;
+
+      Object.defineProperty(SomeComp, Symbol.for(\\"react/metadata\\"), {
+        value: {\\"name\\":\\"SomeComp\\",\\"props\\":[{\\"key\\":\\"name\\",\\"description\\":\\"\\",\\"type\\":\\"string\\",\\"optional\\":false},{\\"key\\":\\"other\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false},{\\"key\\":\\"delta\\",\\"description\\":\\"\\",\\"type\\":\\"number\\",\\"optional\\":false}]},
+        writable: false,
+        enumerable: false
+      });
+    
+"
+`;

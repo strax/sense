@@ -5,7 +5,9 @@ import {
   InterfaceDeclaration,
   TypeLiteralNode,
   SourceFile,
-  ClassDeclaration
+  ClassDeclaration,
+  ExportAssignment,
+  Identifier
 } from "ts-simple-ast";
 import ts from "typescript";
 import assert from "assert";
@@ -70,6 +72,13 @@ export default class Parser {
       case ts.SyntaxKind.VariableDeclaration:
         this.parseStatelessComponent(node);
         break;
+      case ts.SyntaxKind.ExportAssignment:
+        this.visit((node as ExportAssignment).getExpression());
+        break;
+      case ts.SyntaxKind.Identifier:
+        for (const definition of (node as Identifier).getDefinitionNodes()) {
+          this.visit(definition);
+        }
       case ts.SyntaxKind.ClassDeclaration:
         this.parseClassComponent(node as ClassDeclaration);
     }

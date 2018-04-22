@@ -7,13 +7,7 @@
     "prettier": "^1.11.1",
     "ts-node": "^5.0.1"
   },
-  "workspaces": [
-    "example",
-    "core",
-    "explorer",
-    "webpack-ts-props-loader",
-    "cli"
-  ],
+  "workspaces": ["packages/*", "example"],
   "jest": {
     "projects": ["<rootDir>/webpack-ts-props-loader"]
   }

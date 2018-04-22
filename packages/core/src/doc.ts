@@ -11,16 +11,7 @@ const markdown = (content: string): MarkdownNode => ({
   content
 });
 
-export interface PropsNode {
-  type: "PropsNode";
-  component: React.ComponentType;
-}
-export const props = (component: React.ComponentType): PropsNode => ({
-  type: "PropsNode",
-  component
-});
-
-export type DocumentationNode = MarkdownNode | PropsNode;
+export type DocumentationNode = MarkdownNode;
 
 export function doc(
   segments: TemplateStringsArray,

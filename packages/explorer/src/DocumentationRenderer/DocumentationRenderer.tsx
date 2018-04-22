@@ -5,6 +5,7 @@ import Markdown from "react-markdown";
 import PropsTypeView from "./PropsTypeView";
 import componentMetadata from "./componentMetadata";
 import styled from "styled-components";
+import { ComponentMetadata } from "@sense/webpack-ts-props-loader";
 
 const SectionHeader = styled.h3`
   font-size: 16px;
@@ -18,28 +19,39 @@ const Section = styled.div`
   text-rendering: optimizeLegibility;
 `;
 
+type ReactTree = React.ReactElement<any> | React.ReactText;
+
+const componentsFromTree = (root: ReactTree): Set<React.ComponentType> => {
+  if (typeof root === "string" || typeof root === "number") {
+    return new Set();
+  } else {
+    const subtree = React.Children.toArray(root.props.children)
+      .reduce((acc, child ) => [...acc, ...componentsFromTree(child)], [root.type])
+      .filter(type => typeof type !== "string") as React.ComponentType[];
+    return new Set(subtree);
+  }
+}
+
+const propTypes = (tree: React.ReactElement<any>) => {
+  return Array.from(componentsFromTree(tree)).map(componentMetadata) as ComponentMetadata[];
+}
+
 const formatDocumentationNode = (node: DocumentationNode, i: number) => {
   switch (node.type) {
     case "MarkdownNode":
       return <Markdown source={node.content} key={i} />;
-    case "PropsNode":
-      const metadata = componentMetadata(node.component);
-      if (metadata) {
-        return (
-          <Section key={i}>
-            <SectionHeader>{metadata.name} props</SectionHeader>
-            <PropsTypeView metadata={metadata.props} />
-          </Section>
-        );
-      } else {
-        return <span>Type information not available</span>;
-      }
   }
 };
 
 const DocumentationRenderer: React.SFC<{ example: Example }> = props => (
   <>
     {props.example.description.map(formatDocumentationNode)}
+    {propTypes(props.example.render).map(meta => (
+      <Section key={meta.name}>
+        <SectionHeader>{meta.name}</SectionHeader>
+        <PropsTypeView metadata={meta.props} />
+      </Section>
+    ))}
     <Section>
       <SectionHeader>Example source</SectionHeader>
       <JsxPreview tree={props.example.render} />

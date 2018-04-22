@@ -1,22 +1,20 @@
-import { DocumentationNode } from ".";
-
 export class Example {
   constructor(
     public readonly render: JSX.Element,
-    public readonly description: DocumentationNode[]
+    public readonly description: string | null
   ) {}
 }
 
 export function example(render: JSX.Element): Example;
-export function example(doc: DocumentationNode[], render: JSX.Element): Example;
+export function example(doc: string, render: JSX.Element): Example;
 export function example(
-  docOrRender: DocumentationNode[] | JSX.Element,
+  docOrRender: string | JSX.Element,
   render?: JSX.Element
 ) {
   if (render === undefined) {
-    return example([], docOrRender as JSX.Element);
+    return example(null, docOrRender as JSX.Element);
   } else {
-    const doc = docOrRender as DocumentationNode[];
+    const doc = docOrRender as string;
     return new Example(render, doc);
   }
 }

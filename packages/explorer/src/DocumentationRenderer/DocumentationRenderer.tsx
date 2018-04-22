@@ -1,11 +1,12 @@
 import React from "react";
 import JsxPreview from "./JsxPreview";
-import { Example, DocumentationNode } from "@sense/core";
+import { Example } from "@sense/core";
 import Markdown from "react-markdown";
 import PropsTypeView from "./PropsTypeView";
 import componentMetadata from "./componentMetadata";
 import styled from "styled-components";
 import { ComponentMetadata } from "@sense/webpack-ts-props-loader";
+import stripIndent from "strip-indent";
 
 const SectionHeader = styled.h3`
   font-size: 16px;
@@ -36,16 +37,9 @@ const propTypes = (tree: React.ReactElement<any>) => {
   return Array.from(componentsFromTree(tree)).map(componentMetadata) as ComponentMetadata[];
 }
 
-const formatDocumentationNode = (node: DocumentationNode, i: number) => {
-  switch (node.type) {
-    case "MarkdownNode":
-      return <Markdown source={node.content} key={i} />;
-  }
-};
-
 const DocumentationRenderer: React.SFC<{ example: Example }> = props => (
   <>
-    {props.example.description.map(formatDocumentationNode)}
+    {props.example.description && <Markdown source={stripIndent(props.example.description)} />}
     {propTypes(props.example.render).map(meta => (
       <Section key={meta.name}>
         <SectionHeader>{meta.name}</SectionHeader>

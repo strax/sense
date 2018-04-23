@@ -30,6 +30,7 @@
     "webpack-serve": "^0.3.1"
   },
   "devDependencies": {
+    "@sense/cli": "*",
     "@types/cosmiconfig": "^4.0.0",
     "@types/prettier": "^1.10.0",
     "@types/react": "^16.3.12",
@@ -41,8 +42,7 @@
     "@types/webpack": "^4.1.2",
     "@types/webpack-env": "^1.13.5",
     "typescript-plugin-styled-components": "^0.0.5",
-    "typescript-styled-plugin": "^0.6.0",
-    "@sense/cli": "*"
+    "typescript-styled-plugin": "^0.6.0"
   },
   "sense": {
     "examples": "src/**/__examples__/*.example.*"

@@ -63,7 +63,8 @@ export default class ExampleViewer extends React.Component<Props> {
 
   private makeHostContext(): IHostContext {
     return {
-      root: this.mountNode.shadowRoot!
+      root: this.mountNode && this.mountNode.shadowRoot!,
+      example: this.props.example
     };
   }
 
@@ -90,7 +91,9 @@ export default class ExampleViewer extends React.Component<Props> {
           </div>
           <div>
             <RightPane>
-              <DocumentationRenderer example={this.props.example} />
+              <HostContext.Provider value={this.makeHostContext()}>
+                <DocumentationRenderer example={this.props.example} />
+              </HostContext.Provider>
             </RightPane>
           </div>
         </SplitView>

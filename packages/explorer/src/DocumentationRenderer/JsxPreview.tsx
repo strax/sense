@@ -3,7 +3,7 @@ import toJSX from "react-element-to-jsx-string";
 import CodeBlock from "./CodeBlock";
 
 interface Props {
-  tree: React.ReactNode;
+  tree: JSX.Element;
 }
 
 const JsxPreview: React.SFC<Props> = ({ tree }) => {
